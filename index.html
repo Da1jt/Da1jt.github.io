@@ -1,1 +1,665 @@
-<p>connectivity test</p>
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Resume Portfolio Template</title>
+  <style>
+    :root {
+      --ink: #172026;
+      --muted: #66727a;
+      --paper: #f7f4ef;
+      --panel: #ffffff;
+      --line: #ddd6cb;
+      --teal: #0d766e;
+      --red: #b94032;
+      --gold: #c89536;
+      --charcoal: #27313a;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      color: var(--ink);
+      background: var(--paper);
+      font-family: Inter, "Segoe UI", "Microsoft YaHei", Arial, sans-serif;
+      line-height: 1.55;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    .shell {
+      min-height: 100vh;
+    }
+
+    .hero {
+      position: relative;
+      display: grid;
+      grid-template-columns: minmax(0, 1.1fr) minmax(280px, 0.9fr);
+      gap: 36px;
+      align-items: stretch;
+      min-height: 86vh;
+      padding: 40px clamp(20px, 5vw, 72px) 32px;
+      background:
+        linear-gradient(130deg, rgba(23, 32, 38, 0.93), rgba(39, 49, 58, 0.82)),
+        repeating-linear-gradient(135deg, rgba(255, 255, 255, 0.12) 0 1px, transparent 1px 18px),
+        linear-gradient(90deg, #173b3d, #5b342c 58%, #987437);
+      color: #fffdf8;
+      overflow: hidden;
+    }
+
+    .hero::after {
+      content: "";
+      position: absolute;
+      inset: auto 0 0;
+      height: 18vh;
+      background: linear-gradient(180deg, transparent, rgba(247, 244, 239, 0.98));
+      pointer-events: none;
+    }
+
+    .hero-main,
+    .hero-side {
+      position: relative;
+      z-index: 1;
+    }
+
+    .nav {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 64px;
+    }
+
+    .nav a {
+      border: 1px solid rgba(255, 255, 255, 0.28);
+      border-radius: 999px;
+      padding: 8px 13px;
+      color: rgba(255, 255, 255, 0.82);
+      font-size: 13px;
+    }
+
+    .eyebrow {
+      margin: 0 0 14px;
+      color: #f1c06d;
+      font-size: 13px;
+      font-weight: 700;
+      letter-spacing: 0;
+      text-transform: uppercase;
+    }
+
+    h1 {
+      max-width: 760px;
+      margin: 0;
+      font-size: clamp(46px, 7vw, 88px);
+      line-height: 0.95;
+      letter-spacing: 0;
+    }
+
+    .hero-copy {
+      max-width: 680px;
+      margin: 24px 0 0;
+      color: rgba(255, 255, 255, 0.78);
+      font-size: clamp(17px, 2vw, 22px);
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-top: 34px;
+    }
+
+    .button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 44px;
+      border: 1px solid transparent;
+      border-radius: 8px;
+      padding: 0 18px;
+      font-weight: 700;
+    }
+
+    .button.primary {
+      background: #fffdf8;
+      color: var(--ink);
+    }
+
+    .button.secondary {
+      border-color: rgba(255, 255, 255, 0.32);
+      color: #fffdf8;
+    }
+
+    .hero-side {
+      display: grid;
+      align-content: end;
+      gap: 16px;
+    }
+
+    .portrait-slot {
+      display: grid;
+      place-items: center;
+      min-height: 360px;
+      border: 1px solid rgba(255, 255, 255, 0.24);
+      border-radius: 8px;
+      background:
+        linear-gradient(160deg, rgba(255, 255, 255, 0.18), rgba(255, 255, 255, 0.05)),
+        repeating-linear-gradient(90deg, transparent 0 18px, rgba(255, 255, 255, 0.08) 18px 19px);
+      color: rgba(255, 255, 255, 0.8);
+      text-align: center;
+      padding: 28px;
+    }
+
+    .portrait-slot strong {
+      display: block;
+      color: #fff;
+      font-size: 20px;
+    }
+
+    .quick-facts {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 10px;
+    }
+
+    .fact {
+      border-radius: 8px;
+      background: rgba(255, 255, 255, 0.12);
+      padding: 14px;
+      color: rgba(255, 255, 255, 0.76);
+      font-size: 13px;
+    }
+
+    .fact b {
+      display: block;
+      color: #fff;
+      font-size: 15px;
+    }
+
+    main {
+      position: relative;
+      z-index: 2;
+      max-width: 1180px;
+      margin: -38px auto 0;
+      padding: 0 clamp(18px, 4vw, 32px) 64px;
+    }
+
+    .section {
+      display: grid;
+      grid-template-columns: 240px minmax(0, 1fr);
+      gap: clamp(20px, 4vw, 48px);
+      padding: 42px 0;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .section:first-child {
+      padding-top: 0;
+    }
+
+    .section-label {
+      position: sticky;
+      top: 20px;
+      align-self: start;
+    }
+
+    .section-label p {
+      margin: 10px 0 0;
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    h2 {
+      margin: 0;
+      font-size: 24px;
+      letter-spacing: 0;
+    }
+
+    h3 {
+      margin: 0;
+      font-size: 18px;
+      letter-spacing: 0;
+    }
+
+    .overview {
+      display: grid;
+      grid-template-columns: 1.3fr 0.7fr;
+      gap: 18px;
+    }
+
+    .panel,
+    .timeline-item,
+    .award,
+    .skill {
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: var(--panel);
+      box-shadow: 0 18px 45px rgba(23, 32, 38, 0.08);
+    }
+
+    .panel {
+      padding: 24px;
+    }
+
+    .placeholder {
+      color: var(--muted);
+    }
+
+    .placeholder-line {
+      display: block;
+      width: 100%;
+      height: 12px;
+      margin-top: 12px;
+      border-radius: 999px;
+      background: linear-gradient(90deg, #e5ded3, #f1ece4, #e5ded3);
+    }
+
+    .placeholder-line.short {
+      width: 58%;
+    }
+
+    .contact-grid {
+      display: grid;
+      gap: 10px;
+      margin-top: 18px;
+    }
+
+    .contact-row {
+      display: flex;
+      justify-content: space-between;
+      gap: 16px;
+      border-bottom: 1px solid #ece6dc;
+      padding-bottom: 10px;
+      color: var(--muted);
+    }
+
+    .contact-row span:first-child {
+      color: var(--ink);
+      font-weight: 700;
+    }
+
+    .timeline {
+      display: grid;
+      gap: 16px;
+    }
+
+    .timeline-item {
+      display: grid;
+      grid-template-columns: 150px minmax(0, 1fr);
+      gap: 18px;
+      padding: 20px;
+    }
+
+    .meta {
+      color: var(--muted);
+      font-size: 14px;
+      font-weight: 700;
+    }
+
+    .tag-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 14px;
+    }
+
+    .tag {
+      border-radius: 999px;
+      background: #edf4f1;
+      color: #125b56;
+      padding: 6px 10px;
+      font-size: 13px;
+      font-weight: 700;
+    }
+
+    .tag.red {
+      background: #f7e8e4;
+      color: #8e2d24;
+    }
+
+    .tag.gold {
+      background: #f8eedb;
+      color: #7a5519;
+    }
+
+    .visual-band {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 12px;
+      margin-top: 18px;
+    }
+
+    .visual-slot {
+      min-height: 126px;
+      border: 1px dashed #cfc6b8;
+      border-radius: 8px;
+      background:
+        linear-gradient(140deg, rgba(13, 118, 110, 0.12), rgba(184, 64, 50, 0.1)),
+        #fbfaf7;
+      display: grid;
+      place-items: center;
+      padding: 16px;
+      color: var(--muted);
+      text-align: center;
+      font-size: 14px;
+      font-weight: 700;
+    }
+
+    .awards-grid,
+    .skills-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 14px;
+    }
+
+    .award,
+    .skill {
+      padding: 18px;
+      min-height: 132px;
+    }
+
+    .award::before,
+    .skill::before {
+      content: "";
+      display: block;
+      width: 36px;
+      height: 4px;
+      border-radius: 999px;
+      margin-bottom: 14px;
+      background: var(--gold);
+    }
+
+    .skill::before {
+      background: var(--teal);
+    }
+
+    .footer {
+      display: flex;
+      justify-content: space-between;
+      gap: 20px;
+      padding-top: 28px;
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    @media (max-width: 900px) {
+      .hero {
+        grid-template-columns: 1fr;
+        min-height: auto;
+      }
+
+      .nav {
+        margin-bottom: 42px;
+      }
+
+      .portrait-slot {
+        min-height: 260px;
+      }
+
+      main {
+        margin-top: -22px;
+      }
+
+      .section,
+      .overview {
+        grid-template-columns: 1fr;
+      }
+
+      .section-label {
+        position: static;
+      }
+
+      .timeline-item {
+        grid-template-columns: 1fr;
+      }
+
+      .awards-grid,
+      .skills-grid,
+      .visual-band {
+        grid-template-columns: 1fr 1fr;
+      }
+    }
+
+    @media (max-width: 580px) {
+      .hero {
+        padding: 24px 16px 32px;
+      }
+
+      .nav {
+        gap: 6px;
+      }
+
+      .nav a {
+        padding: 7px 10px;
+      }
+
+      .quick-facts,
+      .awards-grid,
+      .skills-grid,
+      .visual-band {
+        grid-template-columns: 1fr;
+      }
+
+      .panel,
+      .timeline-item,
+      .award,
+      .skill {
+        padding: 18px;
+      }
+
+      .contact-row,
+      .footer {
+        display: block;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="shell">
+    <header class="hero">
+      <div class="hero-main">
+        <p class="eyebrow">Resume / Portfolio Template</p>
+        <h1>Name and personal positioning go here</h1>
+        <p class="hero-copy">Place a 1-2 sentence personal summary here, such as academic focus, strengths, application theme, or future research interests. Keep it concise rather than listing the full resume.</p>
+
+        <div class="hero-actions" aria-label="Primary actions">
+          <a class="button primary" href="#projects">Project Section</a>
+          <a class="button secondary" href="#contact">Contact Section</a>
+        </div>
+      </div>
+
+      <aside class="hero-side" aria-label="Visual and key information placeholders">
+        <div class="portrait-slot">
+          <div>
+            <strong>Portrait / Personal Photo / Logo</strong>
+            <span>Place a formal photo, representative project screenshot, or personal brand visual here.</span>
+          </div>
+        </div>
+        <div class="quick-facts">
+          <div class="fact"><b>Location</b>City / Country</div>
+          <div class="fact"><b>Grade</b>Graduation year / Current stage</div>
+          <div class="fact"><b>Focus</b>Cybersecurity / Research interests</div>
+          <div class="fact"><b>Highlight</b>Top award or project</div>
+        </div>
+      </aside>
+    </header>
+
+    <main>
+      <section class="section" id="profile">
+        <div class="section-label">
+          <h2>Profile</h2>
+          <p>Basic identity, contact details, and a short summary.</p>
+        </div>
+        <div class="overview">
+          <article class="panel">
+            <h3>Personal Summary</h3>
+            <p class="placeholder">Place a 3-4 line personal introduction here: academic direction, core abilities, competition or research keywords, and the main theme readers should remember.</p>
+            <span class="placeholder-line"></span>
+            <span class="placeholder-line"></span>
+            <span class="placeholder-line short"></span>
+          </article>
+
+          <article class="panel" id="contact">
+            <h3>Contact Information</h3>
+            <div class="contact-grid">
+              <div class="contact-row"><span>Email</span><span>Email address</span></div>
+              <div class="contact-row"><span>Location</span><span>City / Country</span></div>
+              <div class="contact-row"><span>GitHub</span><span>GitHub link</span></div>
+              <div class="contact-row"><span>Portfolio</span><span>Portfolio link</span></div>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <section class="section" id="education">
+        <div class="section-label">
+          <h2>Education</h2>
+          <p>School, graduation year, coursework, and academic direction.</p>
+        </div>
+        <div class="timeline">
+          <article class="timeline-item">
+            <div class="meta">School / Year</div>
+            <div>
+              <h3>School Name and Current Stage</h3>
+              <p class="placeholder">Place the school name, graduation year, GPA, or academic program here. Add coursework related to the application focus below.</p>
+              <div class="tag-row">
+                <span class="tag">Coursework Slot</span>
+                <span class="tag">Advanced Course Slot</span>
+                <span class="tag gold">Planned Course Slot</span>
+              </div>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <section class="section" id="activities">
+        <div class="section-label">
+          <h2>Activities</h2>
+          <p>Order by impact and highlight role, time commitment, and outcomes.</p>
+        </div>
+        <div class="timeline">
+          <article class="timeline-item">
+            <div class="meta">Activity 01</div>
+            <div>
+              <h3>Organization / Team Name + Role</h3>
+              <p class="placeholder">Place responsibilities, weekly time commitment, grade levels, and 2-3 measurable achievements here.</p>
+              <div class="tag-row"><span class="tag">Leadership</span><span class="tag red">Competition Result</span></div>
+            </div>
+          </article>
+          <article class="timeline-item">
+            <div class="meta">Activity 02</div>
+            <div>
+              <h3>Competition / Club / Internship Activity Name</h3>
+              <p class="placeholder">Place participation context, team role, technical tasks, final result, recommendation letter, or other supporting evidence here.</p>
+              <div class="tag-row"><span class="tag">Teamwork</span><span class="tag gold">Supporting Evidence</span></div>
+            </div>
+          </article>
+          <article class="timeline-item">
+            <div class="meta">Activity 03</div>
+            <div>
+              <h3>Other Long-Term Activity</h3>
+              <p class="placeholder">Place athletics, clubs, volunteer service, or school contributions here to round out the profile.</p>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <section class="section" id="projects">
+        <div class="section-label">
+          <h2>Research & Projects</h2>
+          <p>Showcase security research, papers, vulnerability reports, and development projects.</p>
+        </div>
+        <div>
+          <div class="timeline">
+            <article class="timeline-item">
+              <div class="meta">Project 01</div>
+              <div>
+                <h3>Research / Vulnerability / Engineering Project Title</h3>
+                <p class="placeholder">Place the research question, your specific contribution, technical methods, final output, and credible proof here.</p>
+                <div class="tag-row">
+                  <span class="tag">Research Focus</span>
+                  <span class="tag red">Outcome Proof</span>
+                  <span class="tag gold">Mentor / Publication / Indexing</span>
+                </div>
+              </div>
+            </article>
+            <article class="timeline-item">
+              <div class="meta">Project 02</div>
+              <div>
+                <h3>Second Representative Project</h3>
+                <p class="placeholder">Place project duration, technologies used, challenges, impact scope, and links to files or repositories here.</p>
+              </div>
+            </article>
+          </div>
+
+          <div class="visual-band" aria-label="Project visual material placeholders">
+            <div class="visual-slot">Project screenshot / Certificate image</div>
+            <div class="visual-slot">Paper / Report cover</div>
+            <div class="visual-slot">Competition ranking / Data chart</div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section" id="internship">
+        <div class="section-label">
+          <h2>Internship</h2>
+          <p>Place completed or planned internship experiences here.</p>
+        </div>
+        <div class="timeline">
+          <article class="timeline-item">
+            <div class="meta">Time / Duration</div>
+            <div>
+              <h3>Internship Organization and Role</h3>
+              <p class="placeholder">Place work responsibilities, tech stack, weekly commitment, deliverables, and supervisor feedback here. Planned experiences can be marked as upcoming.</p>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <section class="section" id="awards">
+        <div class="section-label">
+          <h2>Honors & Awards</h2>
+          <p>Use short cards for competitions, certificates, papers, and recommendation letters.</p>
+        </div>
+        <div class="awards-grid">
+          <article class="award"><h3>Award Name</h3><p class="placeholder">Year / Level / Ranking</p></article>
+          <article class="award"><h3>Certificate Name</h3><p class="placeholder">Organization / Level / Date</p></article>
+          <article class="award"><h3>Publication or Indexing</h3><p class="placeholder">Journal / Database / Proof link</p></article>
+          <article class="award"><h3>Recommendation Letter</h3><p class="placeholder">Recommender role / Related project</p></article>
+          <article class="award"><h3>Competition Result</h3><p class="placeholder">Team / Event / Result</p></article>
+          <article class="award"><h3>Other Recognition</h3><p class="placeholder">School or community recognition</p></article>
+        </div>
+      </section>
+
+      <section class="section" id="skills">
+        <div class="section-label">
+          <h2>Skills</h2>
+          <p>Present technical and soft skills by category.</p>
+        </div>
+        <div class="skills-grid">
+          <article class="skill"><h3>Cybersecurity</h3><p class="placeholder">CTF / Vulnerability discovery / Reverse engineering / Binary exploitation</p></article>
+          <article class="skill"><h3>Programming Languages</h3><p class="placeholder">Language list and proficiency level</p></article>
+          <article class="skill"><h3>Research Skills</h3><p class="placeholder">Paper writing / Experiments / Data analysis</p></article>
+          <article class="skill"><h3>Engineering Tools</h3><p class="placeholder">Development tools / Frameworks / Deployment</p></article>
+          <article class="skill"><h3>Leadership</h3><p class="placeholder">Training / Organization / Team management</p></article>
+          <article class="skill"><h3>Community Service</h3><p class="placeholder">Organization name / Hours / Responsibilities</p></article>
+        </div>
+      </section>
+
+      <footer class="footer">
+        <span>Footer: Place copyright, last updated date, or a resume download button here.</span>
+        <span>Static resume portfolio template</span>
+      </footer>
+    </main>
+  </div>
+</body>
+</html>
