@@ -3,8 +3,8 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="A public, non-technical summary of a responsibly reported access-control finding.">
-  <title>Responsible Disclosure | Eric Dai</title>
+  <meta name="description" content="A public case study of a civil aviation mobile-service access-control finding reported through CNVD.">
+  <title>Civil Aviation Disclosure | Eric Dai</title>
   <link rel="stylesheet" href="../styles.css">
 </head>
 <body>
@@ -16,28 +16,28 @@
       </div>
       <div class="intro">
         <p class="kicker">Selected work / 2024</p>
-        <h1>Responsible disclosure of an access-control issue</h1>
-        <p class="lead">A short public account of a privately reported finding, centered on protecting the people who rely on the service.</p>
+        <h1>Civil aviation service: responsible disclosure</h1>
+        <p class="lead">A 2024 access-control finding taught me that a security report is about the people behind the records, not just the flaw.</p>
       </div>
     </div>
   </header>
 
   <main class="wrap case-main">
     <section>
-      <h2>The finding</h2>
-      <p>While studying a mobile service, I identified an authorization weakness that could expose another person's private records. Seeing the potential impact on real users changed how I thought about security research: confirming a problem was only the first step; handling it responsibly mattered more.</p>
+      <h2>What I found</h2>
+      <p>While examining a civil aviation mobile service, I found a weakness in how it controlled access to personal records. It raised the possibility that one account could see information belonging to another person. Unlike a competition challenge, this involved real users whose privacy depended on the system.</p>
     </section>
     <section>
-      <h2>What I did</h2>
-      <p>I documented the finding and submitted it privately through the China National Vulnerability Database (CNVD). The submission was assigned a CNVD record. This confirms documentation of the report; it is not a claim that the issue was fixed or that the service is currently vulnerable.</p>
+      <h2>My role and the report</h2>
+      <p>I investigated the behavior, documented the access-control risk, and submitted my findings through the China National Vulnerability Database (CNVD). The report received a CNVD record. That documents the submission; I have not independently confirmed a fix and make no claim about the service's current status.</p>
     </section>
     <section>
       <h2>Disclosure boundary</h2>
-      <p class="disclosure-note">This public version omits the affected service's identity, live addresses, request details, screenshots, identifiers, and any personal data. I do not publish a reproduction guide. Supporting documentation can be discussed privately with an appropriate reviewer, subject to the affected party's disclosure requirements.</p>
+      <p class="disclosure-note">I name the sector, but not the product or organization. This public case study omits live addresses, requests, account identifiers, screenshots, and personal data; it contains no reproduction guide. Original evidence is reserved for appropriate private review, subject to the affected party's disclosure requirements.</p>
     </section>
     <section>
-      <h2>What stayed with me</h2>
-      <p>Responsible security work means collecting only what is necessary, reporting through the right channel, and keeping users' privacy ahead of the excitement of a discovery. I bring that approach to research and to the students I mentor.</p>
+      <h2>What changed for me</h2>
+      <p>Finding a weakness was only the beginning. Reporting it responsibly, protecting people's privacy, and helping others approach security work with the same care became the more important part of my work.</p>
     </section>
   </main>
   <footer class="wrap"><span>Eric Dai</span><a href="../index.html">Back to portfolio</a></footer>
