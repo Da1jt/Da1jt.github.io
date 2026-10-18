@@ -1,13 +1,13 @@
 * { box-sizing: border-box; }
 :root {
-  --ink: #182d2d;
-  --muted: #48605e;
-  --accent: #08766e;
-  --warm: #ab4636;
-  --gold: #d5af62;
-  --dark: #203a3a;
-  --line: #d0dcd8;
-  --paper: #f4f7f5;
+  --ink: #172d2b;
+  --muted: #38514e;
+  --accent: #00645c;
+  --warm: #963b2f;
+  --gold: #caa257;
+  --dark: #203c34;
+  --line: #b2c3bd;
+  --paper: #dce0df;
 }
 html { scroll-behavior: smooth; }
 body {
@@ -17,10 +17,10 @@ body {
   font: 16px/1.6 "Segoe UI", Arial, sans-serif;
 }
 a { color: var(--accent); text-underline-offset: 4px; }
-a:hover { color: #065e57; }
+a:hover { color: #004a45; }
 a:focus-visible { outline: 3px solid var(--warm); outline-offset: 4px; }
 .wrap { width: min(100% - 48px, 1100px); margin-inline: auto; }
-.site-header { background: #fff; border-bottom: 1px solid var(--line); }
+.site-header { background: #cbded5; border-bottom: 1px solid var(--line); }
 .topbar {
   display: flex;
   align-items: center;
@@ -57,11 +57,11 @@ p { margin: 0 0 16px; }
   margin-top: 16px;
   padding: 30px;
   border-left: 5px solid var(--accent);
-  background: #fff;
+  background: #e2e2d8;
 }
-.work-item--feature { background: #e2eeeb; }
+.work-item--feature { background: #bad8ce; }
 .work-item--team { border-color: var(--warm); }
-.work-item--research { border-color: #b38b38; background: #e8eeed; }
+.work-item--research { border-color: #b38b38; background: #cbdce0; }
 .work-index strong { display: block; color: var(--ink); font: 700 43px/1 Georgia, "Times New Roman", serif; }
 .work-index span { display: block; margin-top: 9px; color: var(--warm); font-size: 13px; font-weight: 800; }
 .work-item p { max-width: 720px; margin: 0; color: var(--muted); }
@@ -69,7 +69,7 @@ p { margin: 0 0 16px; }
 .research-layout { display: grid; grid-template-columns: minmax(0, 1fr) minmax(260px, 410px); gap: 30px; align-items: start; }
 .paper-preview { margin: 0; }
 .paper-preview a { margin: 0; }
-.paper-preview img { display: block; width: 100%; height: auto; border: 1px solid var(--line); background: #fff; }
+.paper-preview img { display: block; width: 100%; height: auto; border: 1px solid var(--line); background: #e5eae6; }
 .paper-preview figcaption { margin-top: 8px; color: var(--muted); font-size: 12px; line-height: 1.5; }
 .paper-preview figcaption a { display: inline; font-weight: normal; }
 .honors { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 0 46px; list-style: none; margin: 0; padding: 0; }
