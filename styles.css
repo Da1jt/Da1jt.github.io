@@ -62,9 +62,11 @@ p { margin: 0 0 16px; }
 .work-item--feature { background: #bad8ce; }
 .work-item--team { border-color: var(--warm); }
 .work-item--research { border-color: #b38b38; background: #cbdce0; }
+.work-item--internship { border-color: #74677d; background: #d8d7e1; }
 .work-index strong { display: block; color: var(--ink); font: 700 43px/1 Georgia, "Times New Roman", serif; }
 .work-index span { display: block; margin-top: 9px; color: var(--warm); font-size: 13px; font-weight: 800; }
 .work-item p { max-width: 720px; margin: 0; color: var(--muted); }
+.work-item .work-role { margin-bottom: 8px; color: var(--ink); font-weight: 700; }
 .work-item a { display: inline-block; margin-top: 13px; font-weight: 700; }
 .research-layout { display: grid; grid-template-columns: minmax(0, 1fr) minmax(260px, 410px); gap: 30px; align-items: start; }
 .paper-preview { margin: 0; }
