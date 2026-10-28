@@ -74,6 +74,11 @@ p { margin: 0 0 16px; }
 .paper-preview img { display: block; width: 100%; height: auto; border: 1px solid var(--line); background: #e5eae6; }
 .paper-preview figcaption { margin-top: 8px; color: var(--muted); font-size: 12px; line-height: 1.5; }
 .paper-preview figcaption a { display: inline; font-weight: normal; }
+.activity-row { display: grid; grid-template-columns: 170px minmax(0, 1fr); gap: 18px; padding: 19px 0; border-top: 1px solid var(--line); }
+.activity-meta { color: var(--warm); font-size: 13px; font-weight: 800; }
+.activity-row h3 { margin-bottom: 5px; font-size: 18px; }
+.activity-row p { max-width: 750px; margin: 0; color: var(--muted); }
+.activity-subheading { margin: 28px 0 14px; font: 700 22px/1.3 Georgia, "Times New Roman", serif; }
 .honors { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 0 46px; list-style: none; margin: 0; padding: 0; }
 .honors li { display: flex; gap: 15px; padding: 19px 0; border-top: 1px solid var(--line); }
 .honors li:nth-child(2n) .honor-index { color: var(--accent); }
@@ -106,6 +111,8 @@ footer { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 12
 @media (max-width: 640px) {
   .wrap { width: min(100% - 32px, 1100px); }
   .topbar { align-items: flex-start; flex-direction: column; padding-block: 16px; }
+  nav { gap: 8px 12px; }
+  nav a { font-size: 13px; }
   .intro { padding-block: 40px 44px; }
   h1 { font-size: 49px; }
   .lead { font-size: 18px; }
@@ -118,6 +125,7 @@ footer { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 12
   .work-index { display: flex; align-items: center; gap: 12px; }
   .work-index strong { font-size: 30px; }
   .work-index span { margin: 0; }
+  .activity-row { grid-template-columns: 1fr; gap: 4px; }
   .honors { grid-template-columns: 1fr; }
   .about-grid, .case-main section { grid-template-columns: 1fr; gap: 14px; }
   .case-header .intro { padding-block: 42px 46px; }
@@ -129,12 +137,15 @@ footer { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 12
 }
 @media (max-width: 360px) {
   .topbar { padding-block: 12px; }
+  nav { gap: 8px 7px; }
+  nav a { font-size: 12px; }
   .intro { padding-block: 26px 30px; }
   .kicker { margin-bottom: 9px; }
   .lead { margin-top: 12px; }
   .intro-link { margin-top: 16px; }
   .mission-layout { gap: 18px; padding-block: 18px; }
   .mission-band blockquote { font-size: 27px; }
+  .mission-band dt { font-size: 18px; }
   main { padding-top: 0; }
   #work { padding-top: 25px; }
 }
