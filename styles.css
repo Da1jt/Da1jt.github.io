@@ -69,6 +69,11 @@ p { margin: 0 0 16px; }
 .work-item .work-role { margin-bottom: 8px; color: var(--ink); font-weight: 700; }
 .work-item a { display: inline-block; margin-top: 13px; font-weight: 700; }
 .work-links { display: flex; flex-wrap: wrap; column-gap: 20px; }
+.competition-evidence { max-width: 720px; margin: 22px 0 0; }
+.competition-evidence > a { display: block; margin: 0; }
+.competition-evidence img { display: block; width: 100%; height: auto; border: 1px solid var(--line); }
+.competition-evidence figcaption { margin-top: 8px; color: var(--muted); font-size: 13px; line-height: 1.5; }
+.competition-evidence figcaption a { display: inline; margin: 0; }
 .technical-evidence { margin-top: 20px; padding-top: 16px; border-top: 1px solid var(--line); }
 .technical-evidence h4 { margin: 0 0 5px; font-size: 14px; }
 .technical-evidence p { font-size: 14px; }
