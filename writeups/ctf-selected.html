@@ -1,0 +1,70 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Three analyses adapted from my personal CTF practice notes: two binary exploitation challenges and one packet-data reconstruction challenge.">
+  <title>Selected CTF Write-ups | Eric Dai</title>
+  <link rel="stylesheet" href="../styles.css">
+</head>
+<body>
+  <header class="site-header case-header">
+    <div class="wrap">
+      <div class="topbar">
+        <a class="brand" href="../index.html">Eric Dai</a>
+        <nav aria-label="Main navigation"><a href="../index.html#ctf">Back to work</a></nav>
+      </div>
+      <div class="intro">
+        <p class="kicker">Technical evidence / CTF practice</p>
+        <h1>Selected CTF Write-ups</h1>
+        <p class="lead">Three analyses adapted from my personal CTF practice notes: two binary exploitation challenges and one packet-data reconstruction challenge.</p>
+      </div>
+    </div>
+  </header>
+  <main class="wrap evidence-main">
+    <nav class="evidence-nav" aria-label="Selected write-ups"><a href="#iscc-a22">ISCC practice / Local label A22</a><a href="#iscc-a23">ISCC practice / Local label A23</a><a href="#silentstream">picoCTF practice / SilentStream</a></nav>
+    <p class="evidence-context">A22 and A23 are local archive labels for ISCC challenge attachments. These are personal practice notes; they do not imply a team result, a picoCTF score, or a competition ranking.</p>
+    <section id="iscc-a22" class="evidence-section" aria-labelledby="iscc-a22-heading">
+      <p class="kicker">ISCC practice / Local label A22</p>
+      <h2 id="iscc-a22-heading">When a stack canary becomes readable</h2>
+      <h3>The problem</h3>
+      <p>This challenge accepts input, echoes data, and accepts another input. My archived write-up identifies an overflow in this sequence. The supplied binary uses a stack canary, a value checked before a function returns, and has a fixed executable layout rather than position-independent code.</p>
+      <h3>My analysis</h3>
+      <p>I followed the two input stages separately. The first input and echo can disclose the canary. Knowing that value changes the second stage: the recorded approach preserves it while changing the saved control-flow data. The binary already provides a useful function and string, so the analysis does not depend on first discovering the address of a shared library.</p>
+      <h3>What the note demonstrates</h3>
+      <p>The write-up connects an information disclosure to a later memory-corruption step. It shows why listing enabled protections is only the start of an analysis: their effectiveness depends on what the application exposes. This is a summary of the archived solution approach, not a newly measured success rate.</p>
+      <h3>Defensive takeaway</h3>
+      <p>Bound input at every entry point and check what an echo can reveal. A stack canary can detect many overwrites, but it does not repair an information leak or make an unbounded input safe.</p>
+      <a href="https://github.com/Da1jt/vcs-cyber-team-ctf/blob/main/writeups/iscc-a22.md" rel="noopener noreferrer">Read this note on GitHub &rarr;</a>
+    </section>
+    <section id="iscc-a23" class="evidence-section" aria-labelledby="iscc-a23-heading">
+      <p class="kicker">ISCC practice / Local label A23</p>
+      <h2 id="iscc-a23-heading">A freed object that remains accessible</h2>
+      <h3>The problem</h3>
+      <p>This menu-driven challenge supports allocation, deletion, editing, and display. My notes identify a use-after-free: a deleted slot can still be displayed or edited. The stale read and stale write have different consequences, even though both come from the same object-lifetime mistake.</p>
+      <h3>My analysis</h3>
+      <p>The recorded solution first examines a freed allocation larger than the small-allocation cache to obtain information about the runtime library. It then uses a stale write on smaller cached allocations to influence where a later allocation lands. The write-up pays attention to the cache’s entry count as well as its linked-list state; changing a pointer alone is not enough to explain the allocation sequence.</p>
+      <h3>What the note demonstrates</h3>
+      <p>The analysis links three layers: the application’s slot table, the allocator’s bookkeeping, and a control-flow target in the supplied runtime. The archived script relies on a hook available in that challenge’s library version. That detail is specific to the supplied environment and should not be generalized to current allocators.</p>
+      <h3>Defensive takeaway</h3>
+      <p>Invalidate a slot when its object is freed, reject subsequent reads and writes through it, and make ownership explicit. Preventing stale access addresses the cause before allocator protections become relevant.</p>
+      <a href="https://github.com/Da1jt/vcs-cyber-team-ctf/blob/main/writeups/iscc-a23.md" rel="noopener noreferrer">Read this note on GitHub &rarr;</a>
+    </section>
+    <section id="silentstream" class="evidence-section" aria-labelledby="silentstream-heading">
+      <p class="kicker">picoCTF practice / SilentStream</p>
+      <h2 id="silentstream-heading">Reconstructing an image from a byte stream</h2>
+      <h3>The problem</h3>
+      <p>The challenge materials include a packet capture, exported packet data, and a small encoder. The encoder shifts each byte by a constant and wraps the result at 256. Recovering the original file requires both reversing that transformation and retaining the order of the transmitted data.</p>
+      <h3>My analysis</h3>
+      <p>I inspected the encoder, extracted the payload fields from the packet export, and concatenated them in packet order. I reversed the byte transformation and checked the recovered file signature. The result begins with a JPEG/JFIF header, providing a concrete check that the output is image data rather than arbitrary decoded bytes.</p>
+      <h3>Recorded result</h3>
+      <p>The local archive contains the reconstructed byte stream and a saved JPEG, and the write-up records recovering the challenge text from the image. An offline check of the supplied packet export reproduced the saved decoded byte stream exactly. This establishes the reconstruction described here; it does not establish a competition score or ranking.</p>
+      <h3>What I learned</h3>
+      <p>A useful reverse-engineering workflow combines a simple model of the transformation with an independent format check. Packet order and file signatures can be as important as understanding the encoding operation itself.</p>
+      <a href="https://github.com/Da1jt/vcs-cyber-team-ctf/blob/main/writeups/silentstream.md" rel="noopener noreferrer">Read this note on GitHub &rarr;</a>
+    </section>
+    <p class="evidence-context">These summaries concern authorized CTF challenges. Challenge binaries, exploit scripts, packet captures, and flags are not published here.</p>
+  </main>
+  <footer class="wrap"><span>Eric Dai</span><a href="../index.html#work">Back to portfolio</a></footer>
+</body>
+</html>

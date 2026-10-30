@@ -69,6 +69,19 @@ p { margin: 0 0 16px; }
 .work-item .work-role { margin-bottom: 8px; color: var(--ink); font-weight: 700; }
 .work-item a { display: inline-block; margin-top: 13px; font-weight: 700; }
 .work-links { display: flex; flex-wrap: wrap; column-gap: 20px; }
+.technical-evidence { margin-top: 20px; padding-top: 16px; border-top: 1px solid var(--line); }
+.technical-evidence h4 { margin: 0 0 5px; font-size: 14px; }
+.technical-evidence p { font-size: 14px; }
+.technical-evidence a { margin-top: 8px; }
+.evidence-main { max-width: 900px; }
+.evidence-nav { padding-block: 28px 16px; }
+.evidence-nav a { font-weight: 700; text-decoration: underline; }
+.evidence-context { color: var(--muted); font-size: 14px; margin-block: 12px 24px; }
+.evidence-section { scroll-margin-top: 24px; }
+.evidence-section h3 { margin: 24px 0 8px; font-size: 19px; }
+.evidence-section p { color: var(--muted); }
+.evidence-section a { font-weight: 700; }
+.evidence-main > p:last-child { margin-top: 24px; }
 .research-layout { display: grid; grid-template-columns: minmax(0, 1fr) minmax(260px, 410px); gap: 30px; align-items: start; }
 .paper-preview { margin: 0; }
 .paper-preview a { margin: 0; }
